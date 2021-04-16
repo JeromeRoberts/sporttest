@@ -11,10 +11,10 @@ class TeamColour extends DataObject
 {
   private static $table_name = 'TeamColour';
   private static $db = [
-    'Name' => 'Varchar',
+    'Colour' => 'Varchar',
     'Hexadecimal' => 'Text'
   ];
-  private static $belongs_many = [
+  private static $has_many = [
     "Teams" => Team::class
   ];
 
@@ -22,7 +22,7 @@ class TeamColour extends DataObject
   {
     $fields = FieldList::create(TabSet::create('Root'));
     $fields->addFieldsToTab('Root.Main', [
-      TextField::create('Name')->setDescription('Enter the name of the colour'),
+      TextField::create('Colour')->setDescription('Enter the name of the colour'),
       TextField::create('Hexadecimal')->setDescription('Insert the hexadecimal value of colour, including # e.g. #FAFAFA'),
     ]);
 

@@ -16,8 +16,9 @@ class Team extends DataObject
   private static $table_name = 'Team';
   private static $db = [
     'Name' => 'Varchar',
-    'Type' => 'Text',
+    'GameCode' => 'Text',
     'Season' => 'Text',
+    'Type' => 'Text'
   ];
   private static $has_one = [
     'TeamColour' => TeamColour::class,
@@ -27,9 +28,10 @@ class Team extends DataObject
     $fields = FieldList::create(TabSet::create('Root'));
     $fields->addFieldsToTab('Root.Main', [
       TextField::create('Name'),
-      ReadonlyField::create('Type', 'Game code', $this->getSportCode()),
+      ReadonlyField::create('GameCode', 'Game code', $this->getSportCode()),
       TextField::create('Season', 'Season', 'Summer')->setDisabled(true),
-      DropdownField::create('TeamColourID', 'Team Colour', TeamColour::get()->map('ID', 'Name'))->setEmptyString('(Select one)'),
+      DropdownField::create('Type', 'Team Type', ['Regional'=>'Regional','National'=>'National']),
+      DropdownField::create('TeamColourID', 'Team Colour', TeamColour::get()->map('ID', 'Colour'))->setEmptyString('(Select one)'),
     ]);
 
     return $fields;
@@ -37,7 +39,7 @@ class Team extends DataObject
 
   public function populateDefaults()
   {
-    $this->Type = $this->getSportCode();
+    $this->GameCode = $this->getSportCode();
     parent::populateDefaults();
   }
   
