@@ -1,0 +1,19 @@
+{
+  "name": "silverstripe/sporttest",
+  "description": "Proj for DNA design",
+  "license": "BSD-3-Clause",
+  "authors": [
+      {
+          "name": "Jerome Roberts",
+          "email": "jerome.e.roberts@gmai,com"
+      }
+  ],
+  "require": {
+      "silverstripe/recipe-cms": "^1.1"
+  },
+  "autoload": {
+      "psr-4": {
+          "SilverStripe\\SportTest\\": "src/"
+      }
+  }
+}
