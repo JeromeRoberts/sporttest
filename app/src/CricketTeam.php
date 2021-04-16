@@ -10,24 +10,19 @@ use SilverStripe\Forms\ReadonlyField;
 class CricketTeam extends Team
 {
   private static $table_name = 'CricketTeam';
-
   private static $db = [
     'Season' => 'Text',
   ];
-
   private static $has_one = [
     'Logo' => Image::class,
   ];
-
   private static $belongs_many_many = [
     "Sportsman" => Sportsman::class,
   ];
-
   private static $owns = [
     'Logo',
   ];
 
-  // Image upload:https://www.silverstripe.org/learn/lessons/v4/working-with-data-relationships-has-many-1
   public function getCMSFields()
   {
     $fields = parent::getCMSFields();

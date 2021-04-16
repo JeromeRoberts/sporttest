@@ -13,17 +13,14 @@ class Team extends DataObject
 {
 
   private static $table_name = 'Team';
-
   private static $db = [
     'Name' => 'Varchar',
     'Type' => 'Text',
     'Season' => 'Text'
   ];
-
   private static $has_many = [
     'Colour' => TeamColour::class,
   ];
-
 
   public function getCMSFields()
   {
