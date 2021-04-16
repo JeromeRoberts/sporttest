@@ -5,13 +5,15 @@ namespace SilverStripe\SportTest;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Forms\ReadonlyField;
+use SilverStripe\Forms\TextField;
 
 class CricketTeam extends Team
 {
   private static $table_name = 'CricketTeam';
   private static $db = [
-    'Season' => 'Text',
+  ];
+  private static $defaults = [
+    "Season" => "Summer"
   ];
   private static $has_one = [
     'Logo' => Image::class,
@@ -26,7 +28,6 @@ class CricketTeam extends Team
   public function getCMSFields()
   {
     $fields = parent::getCMSFields();
-    $fields->addFieldToTab('Root.Main', ReadonlyField::create('Season', 'Season', 'Summer'));
     $fields->addFieldToTab('Root.Main', $uploader = UploadField::create('Logo'));
     $uploader->setFolderName('cricket-logos');
     $uploader->getValidator()->setAllowedExtensions(['png', 'gif', 'jpeg', 'jpg']);

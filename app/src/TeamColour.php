@@ -14,7 +14,7 @@ class TeamColour extends DataObject
     'Name' => 'Varchar',
     'Hexadecimal' => 'Text'
   ];
-  private static $has_one = [
+  private static $belongs_many = [
     "Teams" => Team::class
   ];
 

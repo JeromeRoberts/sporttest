@@ -11,7 +11,7 @@ class TeamAdmin extends ModelAdmin
   private static $managed_models = [
     CricketTeam::class,
     RugbyTeam::class,
-    TeamColour::class,
+    TeamColour::class
   ];
   private static $menu_icon = 'icons/team.svg';
 }
