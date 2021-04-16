@@ -23,6 +23,9 @@ class Team extends DataObject
   private static $has_one = [
     'TeamColour' => TeamColour::class,
   ];
+  private static $belongs_many_many  = [
+    'Sportsmen' => Sportsman::class,
+  ];
   public function getCMSFields()
   {
     $fields = FieldList::create(TabSet::create('Root'));

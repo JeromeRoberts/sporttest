@@ -37,7 +37,29 @@ class HomePage extends Page
   }
 
   // Function 2
+  public function getJeff()
+  {
+    $jeff = Sportsman::get()
+      ->filter([
+        'Name' => 'Jeff Wilson',
+      ])
+      ->first();
 
+    $jeffsTeams = new ArrayList;
+    $arrayItems = [
+      'Name' => $jeff->getField('Name'),
+      'Teams' => $this->getTeams($jeff->getField('ID')),
+    ];
+    $jeffsTeams->push($arrayItems);
+
+    return $jeffsTeams;
+  }
+
+  public function getTeams($playerID)
+  {
+    $teams = Team::get()->filter(['Sportsmen.ID' => $playerID]);
+    return $teams;
+  }
 
   public function getPlayers($teamID)
   {
