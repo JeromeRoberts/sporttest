@@ -21,9 +21,7 @@ class RugbyTeam extends Team
   public function getCMSFields()
   {
     $fields = parent::getCMSFields();
-    $fields->addFieldToTab('Root.Main', TextField::create('Season', 'Season', 'Winter'));
     $fields->addFieldToTab('Root.Main', TextField::create('Mascot'));
-    
     return $fields;
   }
 }
